@@ -6,7 +6,7 @@ Repositorio para alojar el proyecto final (ordinario) de DAS_Sistemas
 * Salazar Coronado Juan Daniel
 
 ## Diagrama
-![Texto alternativo](Diagrama app\Arquitectura.jpeg)
+![Texto alternativo](https://github.com/Arbupa/Proyecto_final_DAS/blob/main/Ordinario/Diagrama%20app/Arquitectura.jpeg)
 ![Texto alternativo](Diagrama app\Diagrama_bd.jpeg)
 
 ## Pasos
