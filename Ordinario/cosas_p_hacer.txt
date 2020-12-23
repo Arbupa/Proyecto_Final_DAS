@@ -1,0 +1,9 @@
+Viendo el ss donde salen las 4 cosas, posiblemente
+hacer una clase para cada clase de la db donde implemente
+la misma interfaz y así conectar la entidad con la db 
+y poder hacer los inserts, después hacer lo mismo con 
+el de la api, pero... bueno de hecho primero tiene que 
+crearse el objeto con la info de la api, después pasarle 
+uno o varios objetos después ese sí ahora pasarlo a la 
+clase que va a implementar la interfaz para conectar eso 
+con la db y pasarle la info que irá insertando.

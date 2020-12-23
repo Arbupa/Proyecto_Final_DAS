@@ -22,13 +22,15 @@
           <p class="lead">No te aseguramos que todos estén, pero igual nada te detiene :)</p>
         </div>
       </div>
-
-      {% for i in data :%}
+      <h1>{{data['title']}}</h1>
+      <img src="{{ data['image_url'] }}" alt=""/>
+      <!--{% for i in data :%}
+      <p>{{i}}</p>
       <p> {{ data[i] }} </p>  
-        {% if i == 'image_url'%}  
-      <img src="i" alt="">
+        {% if i == "image_url": %}  
+            <img src="{{ data['image_url'] }}" alt=""/>
         {% endif %}
       {% endfor %}
-      
+      -->
 </body>
 </html>

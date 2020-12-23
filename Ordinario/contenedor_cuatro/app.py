@@ -8,8 +8,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def first():
+    #return render_template("test.html")
     return render_template("index.html")
-#El redirect se viene a esta ruta
+#El redirect se viene a esta ruta y consume la api
 @app.route("/anime_search/<int:num>", methods = ['GET', 'POST'])
 def search(num):
     r = requests.get(f'https://api.jikan.moe/v3/anime/{num}')

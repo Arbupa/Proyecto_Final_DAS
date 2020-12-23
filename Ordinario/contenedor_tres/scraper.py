@@ -56,10 +56,10 @@ def animedetaillsid():
 	premiered = str(data.get('premiered'))
 	broadcast = str(data.get('broadcast'))
 
-	datos = {"id": id, "title": title, "episodes": episodes, "status": status, "score": score, "rank": rank, "duration": duration, "synopsis": synopsis, "premiered": premiered, "broadcas": broadcast}
+	datos = {"id": id, "title": title, "episodes": episodes, "status": status, "score": score, "rank": rank, "duration": duration, "synopsis": synopsis, "premiered": premiered, "broadcast": broadcast}
 	
 	lista.append(datos)
-	
+	print (lista)
 	return lista
 
 def animeforgenreid():
@@ -89,7 +89,7 @@ def animeforgenreid():
 		rated = str(data['results'][x].get('rated'))
 
 		datos = {"id": id, "title": title, "image": image, "episodes": episodes, "airing": airing, "tipo": tipo, "start_date": start_date, "end_date": end_date, "members": members, "rated": rated}
-		#print(datos)
+		print(datos)
 		lista.append(datos)
 
 		i += 1
@@ -130,7 +130,7 @@ def mangaforname():
 #Para testear el funcionamiento
 #resultados1 = animedetaillsid()
 #resultados2 = animedetaillsname()
-#resultados3	= animeforgenreid()
+resultados3	= animeforgenreid()
 #resultados4 = mangaforname()
 
 #print(resultados1)
