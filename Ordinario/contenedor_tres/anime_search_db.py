@@ -15,7 +15,7 @@ class DataBaseInteract():
        
     def create_tab_animebysearch(self):
       query_table = """CREATE TABLE animebysearch (id Int NOT NULL AUTO_INCREMENT,
-                  page_id varchar(20), title varchar(150), episodes varchar(20), type varchar(20),
+                  page_id Int, title varchar(150), episodes varchar(20), type varchar(20),
                   rated varchar(20), image_url varchar(200), score varchar(20), synopsis varchar(2000),
                   airing varchar(50), members varchar(20), PRIMARY KEY (id)
                   );"""
@@ -37,6 +37,13 @@ class DataBaseInteract():
         self.mycursor.execute(query)
         for row in self.mycursor:
             print(row)
+
+    """query para buscar todas las apariciones de el texto ingresado:
+     SELECT * FROM demo 
+     WHERE name LIKE '%shingeki no kyojin%';
+     OOJOO que cuentan los espacios y todo dentro de % %
+     """
+
 
 db = DataBaseInteract()
 db.create_tab_animebysearch()

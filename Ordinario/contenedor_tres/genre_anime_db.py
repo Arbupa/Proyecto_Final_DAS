@@ -16,7 +16,7 @@ class DataBaseInteract3():
 
     def create_tab_animebygenre(self):
       query_table = """CREATE TABLE animebygenre ( id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                  page_id varchar(20), title varchar(150),image_url varchar(200), episodes varchar(20), airing varchar(20),
+                  page_id Int, title varchar(150),image_url varchar(200), episodes varchar(20), airing varchar(20),
                   type varchar(20), start_date varchar(50), end_date varchar(50),
                   members varchar(20), rated varchar(10)
                   );"""

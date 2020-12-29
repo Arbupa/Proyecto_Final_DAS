@@ -15,7 +15,7 @@ class DataBaseInteract4():
 
     def create_tab_mangabysearch(self):
       query_table = """CREATE TABLE mangabysearch ( id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                  page_id varchar(20), image_url varchar(200),  title varchar(150), publishing varchar(50), type varchar(20),
+                  page_id Int, image_url varchar(200),  title varchar(150), publishing varchar(50), type varchar(20),
                   chapters varchar(20), volumes varchar(20), synopsis varchar(2000),
                   start_date varchar(50), end_date varchar(20)
                   );"""
