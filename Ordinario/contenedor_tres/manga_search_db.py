@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import cursor
 
-class DataBaseInteract4():
+class DbManga():
 
     def __init__(self):
         self.mydb = mysql.connector.connect(
@@ -14,28 +14,29 @@ class DataBaseInteract4():
         self.mycursor = self.mydb.cursor()
 
     def create_tab_mangabysearch(self):
-      query_table = """CREATE TABLE mangabysearch ( id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                  page_id Int, image_url varchar(200),  title varchar(150), publishing varchar(50), type varchar(20),
-                  chapters varchar(20), volumes varchar(20), synopsis varchar(2000),
-                  start_date varchar(50), end_date varchar(20)
-                  );"""
+        query_table = """CREATE TABLE mangabysearch ( id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                    page_id Int, image_url varchar(200),  title varchar(150), publishing varchar(50), type varchar(20),
+                    chapters varchar(20), volumes varchar(20), synopsis varchar(2000),
+                    start_date varchar(50), end_date varchar(50)
+                    );"""
 
-      if self.mycursor.execute(query_table):
-          print("se creó la db")
-      self.mycursor.execute("SHOW TABLES")
-      for x in self.mycursor:
-        print(x)
+        if self.mycursor.execute(query_table):
+            print("se creó la db")
+        else:
+            print("La tabla ya existe")
+    #   self.mycursor.execute("SHOW TABLES")
+    #   for x in self.mycursor:
+    #     print(x)
 
-    def insert_mangabysearch(self):
-    
-    	  #inf = mangaforname()
-
-    	  #for i in inf:
-    		#query = f"INSERT INTO mangabysearch VALUES ('{i.get('mal_id')}','{i.get('title')}','{i.get('publishing')}','{i.get('type')}','{i.get('chapters')}','{i.get('image_url')}','{i.get('volumes')}','{i.get('synopsis')}','{i.get('start_date')}','{i.get('end_date')}');"
-        query = "INSERT INTO mangabysearch (page_id, image_url, title, publishing, type, chapters, volumes, synopsis, start_date, end_date) VALUES ('c','c','c','c','c','c','c','c','c','c');"
-        self.mycursor.execute(query)
-        self.mydb.commit()
-        return "se inserto"
+    def insert_mangabysearch(self, lista: list):
+    	  
+        for i in lista:
+            synopsis = i["synopsis"]
+            synopsis = synopsis.replace("'", "")
+            query = f"INSERT INTO mangabysearch (page_id, image_url, title, publishing, type, chapters, volumes, synopsis, start_date, end_date) VALUES ('{i['page_id']}','{i['image_url']}','{i['title']}','{i['publishing']}','{i['type']}','{i['chapters']}','{i['volumes']}','{synopsis}','{i['start_date']}','{i['end_date']}');"
+            self.mycursor.execute(query)
+            self.mydb.commit()
+        return "se insertaron"
 
     def show_tab_mangabysearch(self):
         query = ("SELECT * FROM mangabysearch;")
@@ -43,7 +44,7 @@ class DataBaseInteract4():
         for row in self.mycursor:
             print (row)
 
-db=DataBaseInteract4()
+#db=DbManga()
 #db.create_tab_mangabysearch()
-db.insert_mangabysearch()
-db.show_tab_mangabysearch()
+#db.insert_mangabysearch()
+#db.show_tab_mangabysearch()

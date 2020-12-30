@@ -27,7 +27,7 @@ class DbAnimeSearch():
 
     def insert_animebysearch(self, lista):
         for i in lista:
-            print(i)
+            #print(i)
             synopsis = i["synopsis"]
             synopsis = synopsis.replace("'", "") 
             query = f"INSERT INTO animebysearch (page_id, title, episodes, type, rated, image_url, score, synopsis, airing, members) VALUES ('{i['page_id']}','{i['title']}','{i['episodes']}','{i['type']}','{i['rated']}','{i['image_url']}','{i['score']}','{synopsis}','{i['airing']}','{i['members']}');"

@@ -1,18 +1,25 @@
 from abc import ABCMeta, abstractclassmethod
 
-#Anime Search class Interface 
-# class DbInterface(metaclass=abc.ABCMeta):
-#    @abc.abstractmethod
-#    def create_table(self):
-#        pass
 class DbInterface():
 
     @abstractclassmethod
-    def create_table():
+    def create_tables():
         pass
 
     @abstractclassmethod
-    def inserta_data():
+    def insert_data_anime_search():
+        pass
+
+    @abstractclassmethod
+    def insert_data_anime_by_id():
+        pass
+
+    @abstractclassmethod
+    def insert_data_genre_anime():
+        pass
+    
+    @abstractclassmethod
+    def insert_data_manga_search():
         pass
 
     @abstractclassmethod

@@ -1,6 +1,10 @@
+import time
 from scraper import *
-from anime_search_db import *
 from interface import *
+from anime_search_db import *
+from animebyid_db import *
+from genre_anime_db import *
+from manga_search_db import *
 
 class InsertaDatos(DbInterface):
     # def __init__(self) -> None:
@@ -8,37 +12,67 @@ class InsertaDatos(DbInterface):
     #     self.db_anime_search = DbAnimeSearch()
 
 ############################### ANIME BY SEARCH ###############################
-    def create_table(self):
-        db_anime_search = DbAnimeSearch()
-        return db_anime_search.create_tab_animebysearch()
+    def create_tables(self):
+        # db_anime_search = DbAnimeSearch()
+        # db_anime_search.create_tab_animebysearch()
+        # db_anime_id = DbAnimeById()
+        # db_anime_id.create_tab_animebyid()
+        # db_manga = DbManga()
+        # db_manga.create_tab_mangabysearch()
+        db_anime_genre = DbAnimeByGenre()
+        db_anime_genre.create_tab_animebygenre()
 
-    def insert_data(self):
+    def inserta_data_anime_search(self):
         scrap = Scraper()
-        animedetaillsname = scrap.animedetaillsname()
+        animedetailsname = scrap.animedetailsname()
         db_anime_search = DbAnimeSearch()
         print("la lista es: ")
-        print(animedetaillsname)
-        return db_anime_search.insert_animebysearch(animedetaillsname)
+        print(animedetailsname)
+        #time.sleep(10)
+        return db_anime_search.insert_animebysearch(animedetailsname)
 ############################### ANIME BY SEARCH ###############################
 
-############################### ANIME BY SEARCH ###############################
-    def create_table(self):
-        db_anime_search = DbAnimeSearch()
-        return db_anime_search.create_tab_animebysearch()
-
-    def insert_data(self):
+############################### ANIME BY ID ###############################
+    def inserta_data_anime_by_id(self):
         scrap = Scraper()
-        animedetaillsname = scrap.animedetaillsname()
-        db_anime_search = DbAnimeSearch()
-        print("la lista es: ")
-        print(animedetaillsname)
-        return db_anime_search.insert_animebysearch(animedetaillsname)
+        anime_details = scrap.animedetailsid()
+        db_anime_search = DbAnimeById()
+        print("la lista por id es: ")
+        print(anime_details)
+        return db_anime_search.insert_animebyid(anime_details)
+
+############################### ANIME BY ID ###############################
+    def insert_data_genre_anime(self):
+        scrap = Scraper()
+        anime_details = scrap.animeforgenreid()
+        db_anime_search = DbAnimeByGenre()
+        #print("la lista por id es: ")
+        #print(anime_details)
+        return db_anime_search.insert_animebygenre(anime_details)
 
 
+    def insert_data_manga_search(self):
+        scrap = Scraper()
+        anime_details = scrap.mangaforname()
+        db_anime_search = DbManga()
+        #print("la lista por id es: ")
+        #print(anime_details)
+        return db_anime_search.insert_mangabysearch(anime_details)
 
 if __name__ == "__main__":
+    #time.sleep(9)
     crea_datos_db = InsertaDatos()
-    crea_datos_db.create_table()
-    crea_datos_db.insert_data()
-    # InsertaDatos.create_table()
-    # InsertaDatos.insert_data()
+    crea_datos_db.create_tables()
+    # crea_datos_db.inserta_data_anime_search()
+    # time.sleep(4)
+    # crea_datos_db.inserta_data_anime_by_id()
+    #meter un sleep
+    #crea_datos_db.insert_data_manga_search()
+    #crea_datos_db.insert_data_genre_anime()
+    #Hasta aqui funciona :D
+
+    #AHORA CORRER TODOO METIENDO SLEEPS
+    #TAMBIEN AGREGAR UNA POSIBLE CONSULTA
+    #EN UN IF PARA EVITAR QUE AL VOLVERLO 
+    #A CORRER ESTE DE ERROR CON LAS TABLAS 
+    #E INSERTS
