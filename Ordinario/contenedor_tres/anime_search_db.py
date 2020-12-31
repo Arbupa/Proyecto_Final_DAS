@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import cursor
 
 class DbAnimeSearch():
-#Creo el conexión string
+    
     def __init__(self):
         self.mydb = mysql.connector.connect(
                     host="localhost",
@@ -20,18 +20,13 @@ class DbAnimeSearch():
                   airing varchar(50), members varchar(20), PRIMARY KEY (id)
                   );"""
 
-      if self.mycursor.execute(query_table):
-          print("se creó la tabla")
-      else:
-          print("La tabla ya existe")
+      self.mycursor.execute(query_table)
 
     def insert_animebysearch(self, lista):
         for i in lista:
-            #print(i)
             synopsis = i["synopsis"]
             synopsis = synopsis.replace("'", "") 
             query = f"INSERT INTO animebysearch (page_id, title, episodes, type, rated, image_url, score, synopsis, airing, members) VALUES ('{i['page_id']}','{i['title']}','{i['episodes']}','{i['type']}','{i['rated']}','{i['image_url']}','{i['score']}','{synopsis}','{i['airing']}','{i['members']}');"
-            # query = f"INSERT INTO animebysearch VALUES ('{i.get('mal_id')}','{i.get('title')}','{i.get('episodes')}','{i.get('type')}','{i.get('rated')}','{i.get('image_url')}','{i.get('score')}','{i.get('synopsis')}','{i.get('airing')}','{i.get('members')}');"
             self.mycursor.execute(query)
             self.mydb.commit()
         return "se insertaron"

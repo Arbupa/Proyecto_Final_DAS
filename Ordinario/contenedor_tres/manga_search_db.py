@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import cursor
 
 class DbManga():
-
+    
     def __init__(self):
         self.mydb = mysql.connector.connect(
                     host="localhost",
@@ -20,16 +20,9 @@ class DbManga():
                     start_date varchar(50), end_date varchar(50)
                     );"""
 
-        if self.mycursor.execute(query_table):
-            print("se creó la db")
-        else:
-            print("La tabla ya existe")
-    #   self.mycursor.execute("SHOW TABLES")
-    #   for x in self.mycursor:
-    #     print(x)
+        self.mycursor.execute(query_table)
 
     def insert_mangabysearch(self, lista: list):
-    	  
         for i in lista:
             synopsis = i["synopsis"]
             synopsis = synopsis.replace("'", "")

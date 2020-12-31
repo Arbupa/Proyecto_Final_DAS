@@ -2,9 +2,8 @@ import mysql.connector
 from mysql.connector import cursor
 from getpass import getpass
 
-
 class DbAnimeById():
-#Creo el conexión string
+
     def __init__(self):
         self.mydb = mysql.connector.connect(
                     host="localhost",
@@ -22,13 +21,7 @@ class DbAnimeById():
                   premiered varchar(50), broadcast varchar(80)
                   );"""
 
-      if self.mycursor.execute(query_table) == False:
-          print("se creó la db")
-      else:
-          print("La tabla ya existe")
-    #self.mycursor.execute("SHOW TABLES")
-    #   for x in self.mycursor:
-    #     print(x)
+      self.mycursor.execute(query_table)
 
     def insert_animebyid(self, lista):
         print("La lista desde la db es:")
@@ -50,9 +43,7 @@ class DbAnimeById():
             print (row)
 
 
-# if __name__ == "__main__":
-#     print(insert_animebyid())
-#     print(show_tab_animebyid())
+
 #db = DbAnimeById()
 #db.create_tab_animebyid()
 #db.insert_animebyid()

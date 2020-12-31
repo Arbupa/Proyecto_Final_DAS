@@ -1,7 +1,7 @@
-FROM python:3
+FROM python:3.7-alpine
 
 COPY . .
 
 RUN pip3 install -r requirements.txt
 
-CMD ["python3","scraper.py"]
+CMD ["python3","puerto.py"]

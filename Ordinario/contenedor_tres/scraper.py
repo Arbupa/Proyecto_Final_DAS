@@ -76,8 +76,8 @@ class Scraper():
 			data = response.json()
 			j = 0
 			pos = 0
-			if contador == 15:
-				time.sleep(18)
+			if contador == 12:
+				time.sleep(14)
 				contador = 0
 			while j < 5:
 
@@ -141,11 +141,3 @@ class Scraper():
 #resultados.animeforgenreid()
 # time.sleep(12)
 # resultados.mangaforname()
-
-#print(resultados1)
-#print("-----------------")
-#print(resultados2)
-#print("-----------------")
-#print(resultados3)
-#print("-----------------")
-#print(resultados4)
