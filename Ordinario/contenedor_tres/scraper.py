@@ -2,16 +2,13 @@ import requests
 import random
 import time
 
-
-
 class Scraper():
 	def __init__(self) -> None:
 		self.urlapi = 'https://api.jikan.moe/v3/'
 
-
 	def animedetailsname(self):
 		#Muestra la información de los primeros 5 resultados más relacionados encontrados por el nombre que se introdujo
-		name = ["shingeki no kyojin", "Pokemon", "boku no hero", "code geass", "hunter pos hunter", "shokugeki no souma"]
+		name = ["shingeki no kyojin", "pokemon", "boku no hero", "code geass", "hunter x hunter", "shokugeki no souma"]
 		lista = []
 		for i in name:
 			response = requests.get(self.urlapi + 'search/anime?q=' + i)
@@ -106,7 +103,7 @@ class Scraper():
 
 	def mangaforname(self):
 		#Muestra la información de los primeros 5 resultados más relacionados encontrados por el nombre que se introdujo
-		name = ["kimetsu no yaiba", "saint seiya", "berserk", "one piece", "dragon ball", "saint seiya"]
+		name = ["kimetsu no yaiba", "berserk", "one piece", "dragon ball", "saint seiya"]
 		lista = []
 
 		for i in name:
