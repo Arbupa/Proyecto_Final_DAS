@@ -27,6 +27,12 @@ def update_anime_search(id):
 @app.route("/anime_search/<int:id>", methods = ['DELETE'])
 def update_anime_search(id):
     return render_template("anime_search.html", id = id)
+
+@app.errorhandler(404)
+def page_not_found(error):
+	return render_template("error.html",error="Página no encontrada..."), 404
+
+
 # @app.route("/anime_busqueda<string:busqueda>", methods = ['GET'])
 # def search_by_id(busqeda):
 #     conn = conn_db

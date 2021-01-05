@@ -93,7 +93,7 @@ class DbInteraction():
 
     def create_tab_animebyid(self):
       query_table = """CREATE TABLE animebyid (id Int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                  page_id Int, title varchar(150), episodes varchar(20), status varchar(75),
+                  page_id Int, image_url varchar(150), title varchar(200), episodes varchar(20), status varchar(75),
                   score varchar(20), rank varchar(20), duration varchar(50), synopsis varchar(3000),
                   premiered varchar(50), broadcast varchar(80)
                   );"""
@@ -108,7 +108,7 @@ class DbInteraction():
             synopsis = synopsis.replace("'", "")
             title = i["title"]
             title = title.replace("'", "")
-            query = f"INSERT INTO animebyid (page_id, title, episodes, status, score, rank, duration, synopsis, premiered, broadcast) VALUES ('{i['page_id']}','{title}','{i['episodes']}','{i['status']}','{i['score']}','{i['rank']}','{i['duration']}','{synopsis}','{i['premiered']}','{i['broadcast']}');"
+            query = f"INSERT INTO animebyid (page_id, image_url, title, episodes, status, score, rank, duration, synopsis, premiered, broadcast) VALUES ('{i['page_id']}','{i['image_url']}','{title}','{i['episodes']}','{i['status']}','{i['score']}','{i['rank']}','{i['duration']}','{synopsis}','{i['premiered']}','{i['broadcast']}');"
             self.mycursor.execute(query)
             self.mydb.commit()
         return "se insertaron"
@@ -122,7 +122,7 @@ class DbInteraction():
     def create_tab_mangabysearch(self):
         query_table = """CREATE TABLE mangabysearch ( id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
                     page_id Int, image_url varchar(200),  title varchar(150), publishing varchar(50), type varchar(20),
-                    chapters varchar(20), volumes varchar(20), synopsis varchar(2000),
+                    chapters varchar(20), volumes varchar(20), synopsis varchar(3000),
                     start_date varchar(50), end_date varchar(50)
                     );"""
 
@@ -143,4 +143,3 @@ class DbInteraction():
         for row in self.mycursor:
             print (row)
 
-    

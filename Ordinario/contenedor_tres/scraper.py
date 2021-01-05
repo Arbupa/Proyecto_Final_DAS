@@ -46,6 +46,7 @@ class Scraper():
 				data = response.json()
 
 				page_id = (data.get('mal_id'))
+				image_url = (data.get('image_url'))
 				title = str(data.get('title'))
 				episodes = str(data.get('episodes'))
 				status = str(data.get('status'))
@@ -56,7 +57,7 @@ class Scraper():
 				premiered = str(data.get('premiered'))
 				broadcast = str(data.get('broadcast'))
 
-				datos = {"page_id": page_id, "title": title, "episodes": episodes, "status": status, "score": score, "rank": rank, "duration": duration, "synopsis": synopsis, "premiered": premiered, "broadcast": broadcast}
+				datos = {"page_id": page_id,"image_url": image_url, "title": title, "episodes": episodes, "status": status, "score": score, "rank": rank, "duration": duration, "synopsis": synopsis, "premiered": premiered, "broadcast": broadcast}
 
 				lista.append(datos)
 			if cont == 30:
