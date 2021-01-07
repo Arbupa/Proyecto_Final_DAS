@@ -1,0 +1,41 @@
+#parrafos{
+    display: inline-block;
+}
+
+img {
+    float: right; 
+    position: relative;
+    width: 400px;
+    height: 500px;
+    padding-right: 40px; 
+}
+
+#div_content{
+    /* background-color: darkturquoise; */
+}
+
+p{
+    font-style: oblique;
+    font-size: 22px;
+}
+
+#title{
+    text-align: center;
+    font-size: 64px;
+}
+
+body{
+    background-color: darkturquoise;   
+}
+
+#key2{
+    text-align: left;
+}
+
+#key{
+
+}
+
+.jumbotron-fluid{
+    background-color: rgb(211, 58, 88);
+}

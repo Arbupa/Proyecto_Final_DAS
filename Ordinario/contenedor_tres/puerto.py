@@ -45,12 +45,12 @@ if __name__ == "__main__":
     if (var == False): 
         crea_datos_db = InsertaDatos()
         crea_datos_db.create_tables()
-        crea_datos_db.inserta_data_anime_search()
-        time.sleep(4)
-        crea_datos_db.inserta_data_anime_by_id()
-        time.sleep(12)
-        crea_datos_db.insert_data_manga_search()
-        time.sleep(12)
+        # crea_datos_db.inserta_data_anime_search()
+        # time.sleep(4)
+        # crea_datos_db.inserta_data_anime_by_id()
+        # time.sleep(12)
+        # crea_datos_db.insert_data_manga_search()
+        # time.sleep(12)
         crea_datos_db.insert_data_genre_anime()
     else:
         pass

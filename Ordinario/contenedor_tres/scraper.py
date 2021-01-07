@@ -91,8 +91,9 @@ class Scraper():
 				end_date = str(data['results'][pos].get('end_date'))
 				members = str(data['results'][pos].get('members'))
 				rated = str(data['results'][pos].get('rated'))
+				synopsis = str(data['results'][pos].get('synopsis'))
 
-				datos = {"id_genre": id_genre, "page_id": page_id, "title": title, "image_url": image, "episodes": episodes, "airing": airing, "type": tipo, "start_date": start_date, "end_date": end_date, "members": members, "rated": rated}
+				datos = {"id_genre": id_genre, "page_id": page_id, "title": title, "image_url": image, "episodes": episodes, "airing": airing, "type": tipo, "start_date": start_date, "end_date": end_date, "members": members, "rated": rated, "synopsis": synopsis}
 				#print(datos)
 				#print(i)
 				lista.append(datos)

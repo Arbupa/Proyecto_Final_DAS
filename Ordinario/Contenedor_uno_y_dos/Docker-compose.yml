@@ -26,8 +26,10 @@ services:
 
   # scraper:
   #   container_name: db_scrapper
-  #   build: /contenedor/
+  #   build: 
+  #     context: ../
+  #     dockerfile: ./contenedor_tres/Dockerfile
   #   depends_on:
   #     - mysql
-#volumes:
+# volumes:
 #     db-sql:
