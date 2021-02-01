@@ -8,6 +8,7 @@ img {
     width: 400px;
     height: 500px;
     padding-right: 40px; 
+    
 }
 
 #div_content{
@@ -22,6 +23,7 @@ p{
 #title{
     text-align: center;
     font-size: 64px;
+    font-style: oblique;
 }
 
 body{

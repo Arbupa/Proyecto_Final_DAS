@@ -24,13 +24,7 @@
         <h4 id="key">Airing:</h4> <p id ="values">{{i.airing}}</p> <br>
         <h4 id="key">Start_date:</h4> <p id ="values">{{i.start_date}}</p> <br>
         <h4 id="key">End_date:</h4> <p id ="values">{{i.end_date}}</p> <br>
-        <h4 id="key">Members:</h4> <p id ="values">{{i.members}}</p>
-        <h4 id="key">Synopsis:</h4> <br>
-          {% if i.synopsis == "" %}
-            <p id ="synopsis_value">No result.</p> 
-          {% else %}
-            <p id ="synopsis_value">{{i.synopsis}}</p> 
-          {% endif %}
+        <h4 id="key">Members:</h4> <p id ="values">{{i.members}}</p> <br> 
         <br> <hr>
         {% endfor %}
     </div>

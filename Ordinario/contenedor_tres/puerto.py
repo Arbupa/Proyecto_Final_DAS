@@ -12,46 +12,47 @@ class InsertaDatos(DbInterface):
         db_interact.create_tab_animebyid()
         db_interact.create_tab_mangabysearch()
         
-    def inserta_data_anime_search(self):
+    def insert_data_anime_search(self):
         scrap = Scraper()
-        animedetailsname = scrap.animedetailsname()
+        animes_to_search = ["shingeki no kyojin", "pokemon", "boku no hero", "code geass", "hunter x hunter", "shokugeki no souma"]
+        anime_by_name = scrap.anime_by_name(animes_to_search)
         db_interact = DbInteraction()
-        return db_interact.insert_animebysearch(animedetailsname)
+        return db_interact.insert_animebysearch(anime_by_name)
 
-    def inserta_data_anime_by_id(self):
+    def insert_data_anime_by_id(self):
         scrap = Scraper()
-        anime_details = scrap.animedetailsid()
+        id_anime = [num for num in range(1, 100)]
+        anime_details = scrap.anime_by_id(id_anime)
         db_interact = DbInteraction()
         return db_interact.insert_animebyid(anime_details)
 
     def insert_data_genre_anime(self):
         scrap = Scraper()
-        anime_details = scrap.animeforgenreid()
+        lista_ids = [num for num in range(1, 21)]
+        anime_details = scrap.anime_by_genre_id(lista_ids)
         db_interact = DbInteraction()
         return db_interact.insert_animebygenre(anime_details)
 
     def insert_data_manga_search(self):
         scrap = Scraper()
-        anime_details = scrap.mangaforname()
+        mangas = ["kimetsu no yaiba", "berserk", "one piece", "dragon ball", "saint seiya"]
+        manga_details = scrap.manga_by_name(mangas)
         db_interact = DbInteraction()
-        return db_interact.insert_mangabysearch(anime_details)
+        return db_interact.insert_mangabysearch(manga_details)
 
 if __name__ == "__main__":
-    #time.sleep(9)
-    # compruebo si la data existe dentro de una tabla, 
-    # y si no, la creo
     db_interact = DbInteraction()
+    # Check if data exists inside database,
+    # if don't, create tables and inserts.
     var = db_interact.db_data_exists()
     if (var == False): 
-        crea_datos_db = InsertaDatos()
-        crea_datos_db.create_tables()
-        # crea_datos_db.inserta_data_anime_search()
-        # time.sleep(4)
-        # crea_datos_db.inserta_data_anime_by_id()
-        # time.sleep(12)
-        # crea_datos_db.insert_data_manga_search()
-        # time.sleep(12)
-        crea_datos_db.insert_data_genre_anime()
-    else:
-        pass
-    #Hasta aqui funciona :D
+        create_data_db = InsertaDatos()
+        create_data_db.create_tables()
+        print( create_data_db.insert_data_anime_search())
+        time.sleep(4)
+        print(create_data_db.insert_data_anime_by_id())
+        time.sleep(12)
+        print(create_data_db.insert_data_manga_search())
+        time.sleep(12)
+        print(create_data_db.insert_data_genre_anime())
+    

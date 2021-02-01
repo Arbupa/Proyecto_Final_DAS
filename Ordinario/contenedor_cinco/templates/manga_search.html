@@ -3,9 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Search Mangas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/anime_search.css')}}" />
 </head>
 <body>
-    
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-5">Search your favorite Mangas! </h1>
+      <p class="lead">We can't guarantee that they all show up, but nothing stops you :)</p>
+    </div>
+  </div>
+      
+      <div id="div_content">
+        {% for i in query_response %}
+          <br>
+          <img src="{{i.image_url}}" alt="anime_search"> 
+          <br>
+          <!-- <h4 id="key">id:</h4> <p id ="values">{{i.id}}</p> -->
+          <h4 id="key">Title:</h4> <p id ="values"> {{i.title}} </p> <br>
+          <!-- <h4 id="key">Anime num:</h4> <p id ="values">{{i.page_id}}</p> -->
+          <h4 id="key">Publishing:</h4> <p id ="values">{{i.publishing}}</p> <br>
+          <h4 id="key">Type:</h4> <p id ="values">{{i.type}}</p> <br>
+          <h4 id="key">Chapters:</h4> <p id ="values">{{i.chapters}}</p> <br>
+          <h4 id="key">Volumes:</h4> <p id ="values">{{i.volumes}}</p> <br>
+          <h4 id="key">Start Date:</h4> <p id ="values">{{i.start_date}}</p> <br>
+          <h4 id="key">End Date:</h4> <p id ="values">{{i.end_date}}</p> <br>
+          <h4 id="key">Synopsis:</h4> <br>
+            {% if i.synopsis == "" %}
+              <p id ="synopsis_value">No result.</p> 
+            {% else %}
+              <p id ="synopsis_value">{{i.synopsis}}</p> 
+            {% endif %}
+          <br> <hr>
+          {% endfor %}
+      </div>
 </body>
 </html>

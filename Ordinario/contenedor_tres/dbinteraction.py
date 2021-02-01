@@ -2,6 +2,8 @@ import mysql.connector
 from mysql.connector import cursor
 import time
 
+from sqlalchemy.sql.functions import percent_rank
+
 class DbInteraction():
     def __init__(self):
         self.mydb = mysql.connector.connect(
@@ -10,12 +12,6 @@ class DbInteraction():
                     password="secret123",
                     database="app_db"
                     )
-        
-    # """query para buscar todas las apariciones de el texto ingresado:
-    #  SELECT * FROM demo 
-    #  WHERE name LIKE '%shingeki no kyojin%';
-    #  OOJOO que cuentan los espacios y todo dentro de % %
-    #  """
 
         self.mycursor = self.mydb.cursor()
 
@@ -38,26 +34,18 @@ class DbInteraction():
             query = f"INSERT INTO animebysearch (page_id, title, episodes, type, rated, image_url, score, synopsis, airing, members) VALUES ('{i['page_id']}','{i['title']}','{i['episodes']}','{i['type']}','{i['rated']}','{i['image_url']}','{i['score']}','{synopsis}','{i['airing']}','{i['members']}');"
             self.mycursor.execute(query)
             self.mydb.commit()
-        return "se insertaron"
-
-    def show_animebysearch(self):
-        query = ("SELECT * FROM animebysearch;")
-        self.mycursor.execute(query)
-        for row in self.mycursor:
-            print(row)
+        return "Data inserted 1/4..."
 
     def create_tab_animebygenre(self):
       query_table = """CREATE TABLE animebygenre ( id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
                   id_genre Int, page_id Int, title varchar(150),image_url varchar(200), episodes varchar(20), airing varchar(20),
                   type varchar(20), start_date varchar(50), end_date varchar(50),
-                  members varchar(20), rated varchar(10), synopsis varchar(5000)
+                  members varchar(20), rated varchar(10)
                   );"""
 
       self.mycursor.execute(query_table)
 
     def insert_animebygenre(self, lista: list):
-        print("La lista que recibe la db es:")
-        print(lista)
         cont = 1
         for i in lista:
             if cont == 25:
@@ -66,23 +54,14 @@ class DbInteraction():
 
             title = i["title"]
             title = title.replace("'", "")
-            synopsis = i["synopsis"]
-            synopsis = synopsis.replace("'", "")
-            query = f"INSERT INTO animebygenre (id_genre, page_id, title, image_url, episodes, airing, type, start_date, end_date, members, rated, synopsis) VALUES ('{i['id_genre']}','{i['page_id']}','{title}','{i['image_url']}','{i['episodes']}','{i['airing']}','{i['type']}','{i['start_date']}','{i['end_date']}','{i['members']}','{i['rated']}', '{synopsis}');"
+            query = f"INSERT INTO animebygenre (id_genre, page_id, title, image_url, episodes, airing, type, start_date, end_date, members, rated) VALUES ('{i['id_genre']}','{i['page_id']}','{title}','{i['image_url']}','{i['episodes']}','{i['airing']}','{i['type']}','{i['start_date']}','{i['end_date']}','{i['members']}','{i['rated']}');"
             self.mycursor.execute(query)
             self.mydb.commit()
             cont += 1
-        return "se insertaron"
 
-    def show_tab_animebygenre(self):
-        query = ("SELECT * FROM animebygenre;")
-        var = self.mycursor.execute(query)
-        #for row in self.mycursor:
-         #   print (type(row))
-        print(type(var))
+        return "All data inserted succesfully 4/4"
 
     def db_data_exists(self):
-        #query = "SELECT * FROM animebygenre;"
         query = "SELECT EXISTS(SELECT * FROM animebygenre WHERE id = 1);"
         exists = False
         try:
@@ -103,33 +82,20 @@ class DbInteraction():
       self.mycursor.execute(query_table)
 
     def insert_animebyid(self, lista):
-        print("La lista desde la db es:")
         for i in lista:
-            title = i["title"]
-            title = title.replace("'", "")
-            synopsis = i["synopsis"]
-            #CHECAR TOODO ESTO DE ABAJO PARA ELIMINAR
-            #" DEL JSON QUE ME REGRESA SYNOPSIS
+            title1 = i["title"]
+            title2 = title1.replace("'", "")
+            title = title2.replace('"', '')
+            syno6 = i["synopsis"]
             #synopsis = synopsis.translate({ord('"'): ''})
-            synopsis = synopsis.replace("'", "")
-            synopsis = synopsis.strip('"')
-            for character in synopsis:
-                print(character)
-                if character == '"':
-                    character = ""
-            #synopsis = synopsis.split('"')
-            print(synopsis)
+            syno1 = syno6.replace("'", "")
+            synopsis = syno1.replace('"', '')
             query = f"INSERT INTO animebyid (page_id, image_url, title, episodes, status, score, rank, duration, synopsis, premiered, broadcast) VALUES ('{i['page_id']}','{i['image_url']}','{title}','{i['episodes']}','{i['status']}','{i['score']}','{i['rank']}','{i['duration']}','{synopsis}','{i['premiered']}','{i['broadcast']}');"
             self.mycursor.execute(query)
             self.mydb.commit()
-        return "se insertaron"
+            
+        return "Data inserted 2/4..."
 
-    def show_tab_animebyid(self):
-        query = ("SELECT * FROM animebyid;")
-        self.mycursor.execute(query)
-        for row in self.mycursor:
-            print (row)
-    
     def create_tab_mangabysearch(self):
         query_table = """CREATE TABLE mangabysearch ( id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
                     page_id Int, image_url varchar(200),  title varchar(150), publishing varchar(50), type varchar(20),
@@ -146,11 +112,5 @@ class DbInteraction():
             query = f"INSERT INTO mangabysearch (page_id, image_url, title, publishing, type, chapters, volumes, synopsis, start_date, end_date) VALUES ('{i['page_id']}','{i['image_url']}','{i['title']}','{i['publishing']}','{i['type']}','{i['chapters']}','{i['volumes']}','{synopsis}','{i['start_date']}','{i['end_date']}');"
             self.mycursor.execute(query)
             self.mydb.commit()
-        return "se insertaron"
-
-    def show_tab_mangabysearch(self):
-        query = ("SELECT * FROM mangabysearch;")
-        self.mycursor.execute(query)
-        for row in self.mycursor:
-            print (row)
+        return "Data inserted 3/4..."
 

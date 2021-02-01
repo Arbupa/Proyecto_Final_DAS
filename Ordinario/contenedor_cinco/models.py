@@ -44,7 +44,6 @@ class AnimeByGenre(Base):
     end_date = Column (String(50))
     members = Column (String(50))
     rated = Column (String(20))
-    synopsis = Column (String(5000))
 
     def __init__(self,id_genre, page_id, title, image_url, episodes, airing, type, start_date, end_date, members, rated, synopsis) -> None:
         self.id_genre = id_genre
@@ -58,7 +57,6 @@ class AnimeByGenre(Base):
         self.end_date = end_date
         self.members = members
         self.rated = rated
-        self.synopsis = synopsis
 
 
 class AnimeById(Base):
