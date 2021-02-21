@@ -1,8 +1,8 @@
-version: '3'
+version: "3"
 
 services:
   mysql:
-    container_name: DB
+    container_name: DATABASE
     image: mysql:5.7.28
     ports:
       - 3306:3306
@@ -24,12 +24,12 @@ services:
     depends_on:
       - mysql
 
-  # scraper:
-  #   container_name: db_scrapper
-  #   build: 
-  #     context: ../
-  #     dockerfile: ./contenedor_tres/Dockerfile
-  #   depends_on:
-  #     - mysql
+  scraper:
+    container_name: scrapper
+    build:
+      context: ./contenedor-tres/.
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
 # volumes:
 #     db-sql:

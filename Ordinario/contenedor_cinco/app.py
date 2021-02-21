@@ -1,5 +1,6 @@
 from flask import redirect, url_for, render_template, jsonify, request
 from flask.app import Flask
+from forms import *
 import requests
 #import sys
 #sys.path.insert(0, '../contenedor_cuatro')
@@ -30,9 +31,6 @@ def get_anime_search(search):
 
 @app.route("/anime_search/delete/<int:id>", methods = ["DELETE"])
 def delete_anime_search(id):
-    #form = ""
-    
-    #print(f"La ultima busqueda fue: {last_search}")
     if request.method == "DELETE":
         query_response = session.query(AnimeBySearch).filter(AnimeBySearch.id == id).delete()
         session.commit()
@@ -40,6 +38,24 @@ def delete_anime_search(id):
         return render_template("anime_search.html", query_return = query_return)
     else:
         return "ID not found"
+
+@app.route("/anime_search/update/<ind:id>", methods = ["POST"])
+def update_anime_search(id):
+    if request.method == "POST" and form.validate():
+        query_response = session.query(AnimeBySearch).filter(AnimeBySearch.id == id)
+        # get form
+        form = AnimeSearchForm(request.form)
+        # replace the ORM object
+        query_response.title = request.form[title]
+        query_response.episodes = request.form[episodes]
+        query_response.type = request.form[Type]
+        query_response.rated = request.form[rated]
+        query_response.image_url = request.form[image_url]
+        query_response.score = request.form[score]
+        query_response.synopsis = request.form[synopsis]
+        query_response.airing = request.form[airing]
+        query_response.members = request.form[members]
+        session.commit()
 
 
 @app.route("/manga_search/<string:search>", methods = ["GET"])

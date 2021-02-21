@@ -48,8 +48,10 @@ if __name__ == "__main__":
     if (var == False): 
         create_data_db = InsertaDatos()
         create_data_db.create_tables()
+        print("Creating data...")
         print( create_data_db.insert_data_anime_search())
         time.sleep(4)
+        print("inserting all data...")
         print(create_data_db.insert_data_anime_by_id())
         time.sleep(12)
         print(create_data_db.insert_data_manga_search())
