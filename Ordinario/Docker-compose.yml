@@ -4,6 +4,7 @@ services:
   mysql:
     container_name: DATABASE
     image: mysql:5.7.28
+    restart: always
     ports:
       - 3306:3306
     environment:
@@ -29,6 +30,7 @@ services:
     build:
       context: ./contenedor-tres/.
       dockerfile: Dockerfile
+    restart: on-failure
     depends_on:
       - mysql
 # volumes:

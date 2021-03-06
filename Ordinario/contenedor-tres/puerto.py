@@ -3,18 +3,22 @@ from scraper import *
 from interface import *
 from dbinteraction import *
 
+time.sleep(30)
+
+
 class InsertaDatos(DbInterface):
-    
+
     def create_tables(self):
         db_interact = DbInteraction()
         db_interact.create_tab_animebygenre()
         db_interact.create_tab_animebysearch()
         db_interact.create_tab_animebyid()
         db_interact.create_tab_mangabysearch()
-        
+
     def insert_data_anime_search(self):
         scrap = Scraper()
-        animes_to_search = ["shingeki no kyojin", "pokemon", "boku no hero", "code geass", "hunter x hunter", "shokugeki no souma"]
+        animes_to_search = ["shingeki no kyojin", "pokemon", "boku no hero",
+                            "code geass", "hunter x hunter", "shokugeki no souma"]
         anime_by_name = scrap.anime_by_name(animes_to_search)
         db_interact = DbInteraction()
         return db_interact.insert_animebysearch(anime_by_name)
@@ -35,21 +39,23 @@ class InsertaDatos(DbInterface):
 
     def insert_data_manga_search(self):
         scrap = Scraper()
-        mangas = ["kimetsu no yaiba", "berserk", "one piece", "dragon ball", "saint seiya"]
+        mangas = ["kimetsu no yaiba", "berserk",
+                  "one piece", "dragon ball", "saint seiya"]
         manga_details = scrap.manga_by_name(mangas)
         db_interact = DbInteraction()
         return db_interact.insert_mangabysearch(manga_details)
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     db_interact = DbInteraction()
     # Check if data exists inside database,
     # if don't, create tables and inserts.
     var = db_interact.db_data_exists()
-    if (var == False): 
+    if (var == False):
         create_data_db = InsertaDatos()
         create_data_db.create_tables()
         print("Creating data...")
-        print( create_data_db.insert_data_anime_search())
+        print(create_data_db.insert_data_anime_search())
         time.sleep(4)
         print("inserting all data...")
         print(create_data_db.insert_data_anime_by_id())
@@ -57,4 +63,3 @@ if __name__ == "__main__":
         print(create_data_db.insert_data_manga_search())
         time.sleep(12)
         print(create_data_db.insert_data_genre_anime())
-    

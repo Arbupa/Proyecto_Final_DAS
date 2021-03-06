@@ -2,16 +2,15 @@ import mysql.connector
 from mysql.connector import cursor
 import time
 
-from sqlalchemy.sql.functions import percent_rank
 
 class DbInteraction():
     def __init__(self):
         self.mydb = mysql.connector.connect(
-                    host="localhost",
-                    user="invitao",
-                    password="secret123",
-                    database="app_db"
-                    )
+            host="127.0.0.1",
+            user="invitao",
+            password="secret123",
+            database="app_db"
+        )
 
         self.mycursor = self.mydb.cursor()
 
@@ -30,20 +29,20 @@ class DbInteraction():
     def insert_animebysearch(self, lista):
         for i in lista:
             synopsis = i["synopsis"]
-            synopsis = synopsis.replace("'", "") 
+            synopsis = synopsis.replace("'", "")
             query = f"INSERT INTO animebysearch (page_id, title, episodes, type, rated, image_url, score, synopsis, airing, members) VALUES ('{i['page_id']}','{i['title']}','{i['episodes']}','{i['type']}','{i['rated']}','{i['image_url']}','{i['score']}','{synopsis}','{i['airing']}','{i['members']}');"
             self.mycursor.execute(query)
             self.mydb.commit()
         return "Data inserted 1/4..."
 
     def create_tab_animebygenre(self):
-      query_table = """CREATE TABLE animebygenre ( id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        query_table = """CREATE TABLE animebygenre ( id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
                   id_genre Int, page_id Int, title varchar(150),image_url varchar(200), episodes varchar(20), airing varchar(20),
                   type varchar(20), start_date varchar(50), end_date varchar(50),
                   members varchar(20), rated varchar(10)
                   );"""
 
-      self.mycursor.execute(query_table)
+        self.mycursor.execute(query_table)
 
     def insert_animebygenre(self, lista: list):
         cont = 1
@@ -73,13 +72,13 @@ class DbInteraction():
         return exists
 
     def create_tab_animebyid(self):
-      query_table = """CREATE TABLE animebyid (id Int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        query_table = """CREATE TABLE animebyid (id Int NOT NULL AUTO_INCREMENT PRIMARY KEY,
                   page_id Int, image_url varchar(150), title varchar(200), episodes varchar(20), status varchar(75),
                   score varchar(20), rank varchar(20), duration varchar(50), synopsis varchar(5000),
                   premiered varchar(50), broadcast varchar(80)
                   );"""
 
-      self.mycursor.execute(query_table)
+        self.mycursor.execute(query_table)
 
     def insert_animebyid(self, lista):
         for i in lista:
@@ -93,7 +92,7 @@ class DbInteraction():
             query = f"INSERT INTO animebyid (page_id, image_url, title, episodes, status, score, rank, duration, synopsis, premiered, broadcast) VALUES ('{i['page_id']}','{i['image_url']}','{title}','{i['episodes']}','{i['status']}','{i['score']}','{i['rank']}','{i['duration']}','{synopsis}','{i['premiered']}','{i['broadcast']}');"
             self.mycursor.execute(query)
             self.mydb.commit()
-            
+
         return "Data inserted 2/4..."
 
     def create_tab_mangabysearch(self):
@@ -113,4 +112,3 @@ class DbInteraction():
             self.mycursor.execute(query)
             self.mydb.commit()
         return "Data inserted 3/4..."
-
