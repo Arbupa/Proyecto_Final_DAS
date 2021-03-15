@@ -3,7 +3,7 @@ from scraper import *
 from interface import *
 from dbinteraction import *
 
-time.sleep(30)
+# time.sleep(30)
 
 
 class InsertaDatos(DbInterface):

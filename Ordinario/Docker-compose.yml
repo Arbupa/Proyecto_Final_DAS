@@ -12,6 +12,10 @@ services:
       - MYSQL_DATABASE=app_db
       - MYSQL_USER=invitao
       - MYSQL_PASSWORD=secret123
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
     # volumes:
     #     - db-sql:/var/lib/mysql
 
@@ -32,6 +36,8 @@ services:
       dockerfile: Dockerfile
     restart: on-failure
     depends_on:
-      - mysql
+      mysql:
+            condition: service_healthy
+
 # volumes:
 #     db-sql:
