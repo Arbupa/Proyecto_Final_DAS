@@ -21,7 +21,7 @@
     <div style="padding-top: 40px;" class="row row-cols-1 row-cols-md-2">
         <div class="col mb-4">
           <div class="card">
-            <a href="http://localhost:4000/anime_search/20"><img src="static\anime33.jpg" class="card-img-top" alt="..."></a>
+            <a href="http://localhost:5000/anime_search/pokemon"><img src="static\anime33.jpg" class="card-img-top" alt="..."></a>
             <div class="card-body">
               <h3 class="card-title">¡Busca tu anime favorito!</h3>
              
@@ -41,9 +41,15 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    Cualquier anime por nombre y espacios
-                    Ejemplo:
-                    https://api.jikan.moe/v3/search/anime?q=one piece
+                    <p> Ejemplos: <br>
+                      shingeki no kyojin <br>
+                      <!--https://api.jikan.moe/v3/search/anime?q=one piece-->
+                      pokemon <br>
+                      boku no hero <br>
+                      code geass <br>
+                      hunter x hunter <br>
+                      shokugeki no souma 
+                    </p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -57,7 +63,7 @@
         </div>
         <div class="col mb-4">
           <div class="card">
-            <a href="http://localhost:4000/"><img src="static\anime_genre.jpg" class="card-img-top" alt="..."></a>
+            <a href="http://localhost:5000/genre_byid/1"><img src="static\anime_genre.jpg" class="card-img-top" alt="..."></a>
             <div class="card-body">
               <h3 class="card-title">Encuentra animes por género</h3>
              <!-- Button trigger modal -->
@@ -76,8 +82,9 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    /id desde el 1 al 43
-                    Ejemplo: https://api.jikan.moe/v3/search/anime?genre=1
+                    <p> /(id) desde el 1 al 20
+                      Ejemplo: https://api.jikan.moe/v3/search/anime?genre=1 
+                    </p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -91,7 +98,7 @@
         </div>
         <div class="col mb-4">
           <div class="card">
-            <a href="http://localhost:4000/"><img src="static\anime_id.jpg" class="card-img-top" alt="..."></a>
+            <a href="http://localhost:5000/anime_byid/1"><img src="static\anime_id.jpg" class="card-img-top" alt="..."></a>
             <div class="card-body">
               <h3 class="card-title">¡No te pierdas de los datos más relevantes acerca de tus animes favoritos!</h3>
               <!-- Button trigger modal -->
@@ -110,9 +117,10 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    Agregar el id
-                    Ejemplo:
-                    https://api.jikan.moe/v3/anime/20
+                    <p> /(id) desde el 1 al 20 <br>
+                      Ejemplo: <br>
+                      https://api.jikan.moe/v3/anime/20 
+                    </p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -126,7 +134,7 @@
         </div>
         <div class="col mb-4">
           <div class="card">
-            <a href="http://localhost:4000/"><img src="static\manga1.jpg" class="card-img-top" alt="..."></a>
+            <a href="http://localhost:5000/manga_search/saint"><img src="static\manga1.jpg" class="card-img-top" alt="..."></a>
             <div class="card-body">
               <h3 class="card-title">¡Conoce todo acerca de tus mangas preferidos!</h3>
               <!-- Button trigger modal -->
@@ -145,8 +153,15 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    Buscar por nombre del manga, ejemplo:
-                    https://api.jikan.moe/v3/search/manga?q=one piece
+                    <p> Buscar por nombre del manga, ejemplo: <br>
+                      https://api.jikan.moe/v3/search/manga?q=one piece  <br>
+                      one piece <br>
+                      kimetsu no yaiba  <br>
+                      saint seiya  <br>
+                      berserk  <br>
+                      dragon ball 
+                    </p> 
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Info</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/anime_byid.css')}}" />
+</head>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-5">Know more about your favorite animes!</h1>
+          <p class="lead">We can't guarantee that they all show up, but nothing stops you :)</p>
+        </div>
+    </div>
+    <div id="div_content">
+      <h1 id ="title">{{query_response.title}}</h1> <hr>
+      <img src="{{query_response.image_url}}" alt="anime_byid">
+            <br>
+           <!-- <h4 id="key">ID Anime:</h4> <p id ="values">{{query_response.id}}</p> -->
+           <!-- <h4 id="key">ID...</h4> <p id ="values">{{query_response.page_id}}</p>  -->
+           <h4 id="key">Episodes:</h4> <p id ="values">{{query_response.episodes}}</p>
+           <h4 id="key">Status: </h4> <p id ="values">{{query_response.status}}</p> 
+           <h4 id="key">Score: </h4> <p id ="values">{{query_response.score}}</p> 
+           <h4 id="key2">Rank: </h4> <p id ="values">{{query_response.rank}}</p> 
+           <h4 id="key2">Duration: </h4> <p id ="values">{{query_response.duration}}</p> 
+           <h4 id="key2">Premiered: </h4> <p id ="values">{{query_response.premiered}}</p> 
+           <h4 id="key">Broadcast: </h4> <p id ="values">{{query_response.broadcast}}</p> 
+           <h4 id="key">Synopsis: </h4> 
+           {% if query_response.synopsis == "" %}
+              <p id ="synopsis_value">No result.</p> 
+           {% else %}
+              <p id ="values">{{query_response.synopsis}}</p> 
+           {% endif %}
+        </div>
+</body>
+</html>
