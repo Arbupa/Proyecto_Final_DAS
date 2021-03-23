@@ -12,26 +12,26 @@ services:
       - MYSQL_DATABASE=app_db
       - MYSQL_USER=invitao
       - MYSQL_PASSWORD=secret123
-    healthcheck:
-      # acá están algunos de los que he probado
-      #test: mysql ping -h 127.0.0.1:3306 -u $$MYSQL_USER --password=$$MYSQL_ROOT_PASSWORD
-      #test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      #test: mysql --user=$$MYSQL_USER --password=$$MYSQL_PASSWORD -e 'SHOW DATABASES;'
-      #test: ["CMD", "mysqladmin", "ping", "-proot", "-h", "localhost"]
-      #test: '/usr/bin/mysql --user=root --password=root --execute "SHOW DATABASES;"'
-      # test: [
-      #     "CMD",
-      #     "mysqladmin",
-      #     "ping",
-      #     # "-h",
-      #     "0.0.0.0:3306",
-      #     "mysql",
-      #     "-uroot",
-      #     "-proot",
-      #   ]
-      # interval: 10s
-      # timeout: 10s
-      # retries: 5
+    #healthcheck:
+    # acá están algunos de los que he probado
+    #test: mysql ping -h 127.0.0.1:3306 -u $$MYSQL_USER --password=$$MYSQL_ROOT_PASSWORD
+    #test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+    #test: mysql --user=$$MYSQL_USER --password=$$MYSQL_PASSWORD -e 'SHOW DATABASES;'
+    #test: ["CMD", "mysqladmin", "ping", "-proot", "-h", "localhost"]
+    #test: '/usr/bin/mysql --user=root --password=root --execute "SHOW DATABASES;"'
+    # test: [
+    #     "CMD",
+    #     "mysqladmin",
+    #     "ping",
+    #     # "-h",
+    #     "0.0.0.0:3306",
+    #     "mysql",
+    #     "-uroot",
+    #     "-proot",
+    #   ]
+    # interval: 10s
+    # timeout: 10s
+    # retries: 5
 
     # volumes:
     #     - db-sql:/var/lib/mysql
